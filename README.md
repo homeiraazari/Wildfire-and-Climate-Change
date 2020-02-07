@@ -1,2 +1,14 @@
-# Wildfire-and-Climate-Change
+# Wildfire and Climate Change
+### Machine Learning project by Homeira Azari and Mrinmayee Kulkarni
+
+Climate change affects the social and environmental determinants of health, clean air, safe drinking water, enough food, and secure shelter. Between 2030 and 2050, climate change is expected to cause approximately 250000 additional deaths per year.1 The effects of climate change on temperature, precipitation levels, and soil moisture are turning many of our forests into kindling during wildfire season. However, wildfires are not just a result of climate change, they’re also contributing to it much more than imagined. In this research, we want to evaluate to what extent people are aware of climate change and its effect on their life. Additionally, we would like to understand the causes of wildfires to take action and prevent climate change.
+
+## Data Exploration
+
 This data publication contains a spatial database of wildfires that occurred in the United States from 1992 to 2015. It is the third update of a publication originally generated to support the national Fire Program Analysis (FPA) system. The wildfire records were acquired from the reporting systems of federal, state, and local fire organizations. The following core data elements were required for records to be included in this data publication: discovery date, final fire size, and a point location at least as precise as Public Land Survey System (PLSS) section (1-square mile grid). The data were transformed to conform, when possible, to the data standards of the National Wildfire Coordinating Group (NWCG). Basic error-checking was performed and redundant records were identified and removed, to the degree possible. The resulting product, referred to as the Fire Program Analysis fire-occurrence database (FPA FOD), includes 1.88 million geo-referenced wildfire records, representing a total of 140 million acres burned during the 24-year period.
+The wildfire dataset is in sqlite format. Therefore, we connected it with the sqlite3 library to open it in jupyter notebook. We then converted this file to a dataframe and explored the data. 
+We went through all the columns to get a better understanding of what data was in each column and if it matched with the data types.And chose only the columns necessary for our analysis. These are the columns that we decided to include in our new dataframe,
+FIRE_NAME, FIRE_YEAR, DISCOVERY_DATE, DISCOVERY_DOY, STAT_CAUSE_DESCR, CONT_DATE, CONT_DOY, FIRE_SIZE, FIRE_SIZE_CLASS, LATITUDE, LONGITUDE, STATE, COUNTY, Shape.
+Then we created a function to evaluate how many missing observations are in each column.The column fire name had missing values very close to the dataset row count and we decided delete this column as there would be local , small fires which would remain unnamed and still be a valid indicator for our project.
+
+## References
