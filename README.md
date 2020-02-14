@@ -12,3 +12,11 @@ FIRE_NAME, FIRE_YEAR, DISCOVERY_DATE, DISCOVERY_DOY, STAT_CAUSE_DESCR, CONT_DATE
 Then we created a function to evaluate how many missing observations are in each column.The column fire name had missing values very close to the dataset row count and we decided delete this column as there would be local , small fires which would remain unnamed and still be a valid indicator for our project.
 
 ## References
+
+1.	Climate change and health. (n.d.). Retrieved from https://www.who.int/news-room/fact-sheets/detail/climate-change-and-health
+2.	Short, K. C. (2014). A spatial database of wildfires in the United States, 1992-2011. Earth System Science Data, 6(1), 1–27. doi: 10.5194/essd-6-1-2014
+3.	Westerling, A. L., Brown, T. J., Schoennagel, T., Swetnam, T. W., Turner, M. G., & Veblen, T. T. (2016). Climate and Wildfire in Western US Forests. Forest Conservation in the Anthropocene: Science, Policy, and Practice, 43–55. doi:10.5876/9781607324591.c003
+4.	Cody, E. M., Reagan, A. J., Mitchell, L., Dodds, P. S., & Danforth, C. M. (2015). Climate Change Sentiment on Twitter: An Unsolicited Public Opinion Poll. Plos One, 10(8). doi: 10.1371/journal.pone.0136092Short, K. C. (2014). A spatial database of wildfires in the United States, 1992-2011. Earth System Science Data, 6(1), 1–27. doi: 10.5194/essd-6-1-2014
+5.	Pearce, W., Holmberg, K., Hellsten, I., & Nerlich, B. (2014). Climate Change on Twitter: Topics, Communities and Conversations about the 2013 IPCC Working Group 1 Report. PLoS ONE, 9(4). doi: 10.1371/journal.pone.0094785
+6.	1.88 Million US Wildfires. (n.d.). Retrieved from https://www.kaggle.com/rtatman/188-million-us-wildfires
+7.	Qian, E. (2019, November 13). Twitter Climate Change Sentiment Dataset. Retrieved from https://www.kaggle.com/edqian/twitter-climate-change-sentiment-dataset
