@@ -22,10 +22,21 @@ FIRE_NAME, FIRE_YEAR, DISCOVERY_DATE, DISCOVERY_DOY, STAT_CAUSE_DESCR, CONT_DATE
 
 ## Data Exploration
 
-*For the data exploration phase we used the newly created sqlite table to create plots for visualising our datset.
-      *Firstly, we plotted the frequency of wildfire over time to understand the pattern.
-      *Secondly, we plotted the count of fires based on the cause in a bar chart.
-      *Thirdly, we plotted the fire size vs fire year to understand cumulative hectares affected by fire over the years.
+* For the data exploration phase we used the newly created sqlite table to create plots for visualising our datset.
+
+ * Count of fires occurred in the top 10 states.
+      
+ * Frequency of wildfire over time. 
+      
+ * We also plotted the count of fires based on the cause in a bar chart. In this plot we noticed that the Debris Burning had the most    counts. Therefore, we plotted the bar chart just for the Debris Burning vs Fire Class.
+      
+ * The next is the fire size vs fire year to understand cumulative hectares affected by fire over the years.
+     
+ * Correlation matrix for all the features in our datasets. The stronger correlations are the darker greens.
+
+## Methodology
+
+
 
 
 
