@@ -16,9 +16,13 @@ FIRE_NAME, FIRE_YEAR, DISCOVERY_DATE, DISCOVERY_DOY, STAT_CAUSE_DESCR, CONT_DATE
 
 * We changed the Julian date format to normal date format for DISCOVERY_DATE and CONT_DATE. We created the YYYY/MM/DD date format columns named DISC_DATE and CONTAIND_DATE and drop the previous columns.
 
-* There are almost 50% missing values for columns CONTAIN_DATE and CONT_DOY. We created a column TOTAL_DAYS to compute the total number of days to contain the fire. In this column the missing values were tagged by NaN which we think they will not effect the data exploration and data modeling. We noticed that while reading in the newly created table in our exploration notebook the date formats weren't read in properly. Thus, we changed the read in with the correct date format and then subtracted column discovery date from contain date to get total days the fire was burning.
+* There are almost 50% missing values for columns CONTAIN_DATE and CONT_DOY. We created a column TOTAL_DAYS to compute the total number of days to contain the fire. In this column the missing values were tagged by NaN which we think they will not effect the data exploration and data modeling.
 
 * Once we cleaned the data for our exploration, we saved it as a new sql table in our sqlite database for further use.
+
+* We noticed that while reading in the newly created table in our exploration notebook the date formats weren't read in properly. Thus, we changed the read in with the correct date format and then subtracted column discovery date from contain date to get total days the fire was burning.
+
+
 
 ## Data Exploration
 
