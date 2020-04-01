@@ -3,7 +3,10 @@
 
 Climate change affects the social and environmental determinants of health, clean air, safe drinking water, enough food, and secure shelter. Between 2030 and 2050, climate change is expected to cause approximately 250000 additional deaths per year.1 The effects of climate change on temperature, precipitation levels, and soil moisture are turning many of our forests into kindling during wildfire season. However, wildfires are not just a result of climate change, they’re also contributing to it much more than imagined. In this research, we want to evaluate to what extent people are aware of climate change and its effect on their life. Additionally, we would like to understand the causes of wildfires to take action and prevent climate change.
 
+
 ## Data Cleaning
+
+### Wildfire Dataset
 
 * This data publication contains a spatial database of wildfires that occurred in the United States from 1992 to 2015. It is the third update of a publication originally generated to support the national Fire Program Analysis (FPA) system. The wildfire records were acquired from the reporting systems of federal, state, and local fire organizations. The following core data elements were required for records to be included in this data publication: discovery date, final fire size, and a point location at least as precise as Public Land Survey System (PLSS) section (1-square mile grid). The data were transformed to conform, when possible, to the data standards of the National Wildfire Coordinating Group (NWCG). Basic error-checking was performed and redundant records were identified and removed, to the degree possible. The resulting product, referred to as the Fire Program Analysis fire-occurrence database (FPA FOD), includes 1.88 million geo-referenced wildfire records, representing a total of 140 million acres burned during the 24-year period.
 
@@ -22,9 +25,43 @@ FIRE_NAME, FIRE_YEAR, DISCOVERY_DATE, DISCOVERY_DOY, STAT_CAUSE_DESCR, CONT_DATE
 
 * We noticed that while reading in the newly created table in our exploration notebook the date formats weren't read in properly. Thus, we changed the read in with the correct date format and then subtracted column discovery date from contain date to get total days the fire was burning.
 
+* While reading the newly cleaned file we had to parse the dates while reading in as it would preserve the data types the way we had saved the file.
+
+### Twitter Data
+
+* This dataset aggregates tweets pertaining to climate change collected between Apr 27, 2015 and Feb 21, 2018. In total, 43943 tweets were annotated. 
+
+Each tweet is labelled as one of the following classes:
+
+2(News): the tweet links to factual news about climate change
+1(Pro): the tweet supports the belief of man-made climate change
+0(Neutral: the tweet neither supports nor refutes the belief of man-made climate change
+-1(Anti): the tweet does not believe in man-made climate change
+
+* For starters at a glance the data did not look messy as it did not have any null or missing values. But once we dug deeper we had to understand how we could clean up this dataset.
+
+* We first dropped the tweetid column which was not useful for our analysis and created a copy of the dataframe for further cleaning.
+
+* Then we checked the length of the message column to see how many tweets had more than 140 characters to understand the outliers and further clean the data set.
+
+* To understand this discrepancy better we visualised this length column for each tweet we created "tweet_len" to plot a boxplot to show the outliers.
+
+* We also plotted the sentiment count to get a better picture of this data set.
+
+* Even with a preliminary wordcloud we saw there was noise in the text.
+
+* Thus, we first tried to view the messages with more than 140 characters and noticed that they had twitter handles,URLs, different punctuations, symbols etc. We ran this through BeautifulSoup to parse it, then converted the string to lower case so that everything was uniform. 
+
+* Later we removed the URLs, Twitter handles and 'rt' in the beginning of the messages with a for loop.
+
+* Once that was cleaned we then used regular expressions to remove https: etc. with alphabets and space. We also removed punctuations and replaced tab with space further.
+
+* Once these were updated we made a new dataframe with a more cleaner design with message column titled as "text" and sentiment as "target" for better utility for running the models.
 
 
 ## Data Exploration
+
+### Wildfire Dataset
 
 * For the data exploration phase we used the newly created sqlite table to create plots for visualising our datset.
 
@@ -37,15 +74,50 @@ FIRE_NAME, FIRE_YEAR, DISCOVERY_DATE, DISCOVERY_DOY, STAT_CAUSE_DESCR, CONT_DATE
  * The next is the fire size vs fire year to understand cumulative hectares affected by fire over the years.
      
  * Correlation matrix for all the features in our datasets. The stronger correlations are the darker greens.
+ 
+ ### Twitter Data
+ 
+* For the data exploration we tried different word clouds with different sentiments. The word cloud with all the sentiments was very similar to the pro-climate change and news related to climate change. The word cloud that stood out the most was the one for anti-climate change views.
+
+* As the count for Pro-climate change views was significant , we plotted a pie chart to visualise the maximum count group.
+
+
+## Pre-Processing
+
+### Wildfire Dataset
+
+For Pre Processing the data for modeling we had to,
+
+* Use the label encoder to encode cause description, state and fire class between 0 and n_classes-1.
+
+* We also divided the total days calculated previously in four bins and created a new column for day category for a multi class analysis.
+
+### Twitter Data
+
+* We are still using our regex pre-processing for the modeling, but would like to find better ways to deal with the cleaned dataset than this.
+
 
 ## Methodology
 
-* Currently we are trying to experiment different models by creating dummy variables for the categorical variables, FIRE_CLASS and CAUSE_DESC. It looks like the relationship may not be linear as we run the models, which is obvious as the wildfires would not have a set linear pattern to follow.
+### Wildfire Dataset
 
-* Thus, we are going to explore in other ways to model our data to get the best out of our features.
+* Modeling Wildfire data set on Random forests.
 
-* We are also modeling and tuning a decision tree with DAYS and FIRE_SIZE to understand the relationship.
+* Exploring and tuning Random forest and Decision Tree models for the wildfire data set.
 
+### Twitter Data
+
+* Exploring Sentiment analysis on Twitter data for Climate change.
+
+* Running a logistic regression model with tfidf vectorizer. 
+
+* Comparing two different logistic regression models with sparsity (L1 and L2). Firstly, setting up a baseline and getting the tfidf vectorizer score and count vectorizer score for the logistic regression. Then, transforming features as per the vextorizer which worked better for the model with respect to score and fit with l1 and l2 respectively to get a cross validation score to compare.
+
+* Running a random forest classifier.
+
+* If time permits model a support vecto machine and Naive Bayes(multinomialNB) model on the dataset.
+
+* Once these models are giving desired results then better tune them to get te optimum scores.
 
 
 ## References
