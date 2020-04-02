@@ -86,11 +86,17 @@ Each tweet is labelled as one of the following classes:
 
 ### Wildfire Dataset
 
-For Pre Processing the data for modeling we had to,
+Pre Processing the data in order to do modeling:
 
-* Use the label encoder to encode cause description, state and fire class between 0 and n_classes-1.
+* Created a variable to calculate total number of days fire contained 
+
+* Dropped missing values
+
+* Used the label encoder to encode cause description, state and fire class with values between 0 and n_classes-1.
 
 * We also divided the total days calculated previously in four bins and created a new column for day category for a multi class analysis.
+
+* Created four various training and test datasets for future analysis
 
 ### Twitter Data
 
@@ -101,9 +107,20 @@ For Pre Processing the data for modeling we had to,
 
 ### Wildfire Dataset
 
-* Modeling Wildfire data set on Random forests.
+* Run Linear Regression model on all of the four datasets
+    * It indicates that we can not use linear regression to answer our research questions 
 
-* Exploring and tuning Random forest and Decision Tree models for the wildfire data set.
+* Run Decision Tree model on all of the four datasets and tunned paramethers for better accuracy
+    * Model with CAUSE_DESCR variable (23% accuracy on test dataset)
+    * Model with LABEL variable (100% accuracy on test dataset)
+    * Model with FIRE_SIZE variable (15% accuracy on test dataset)
+
+* Run Random Forest on three of the datasets
+    * Model with CAUSE_DESCR variable (58% accuracy on test dataset)
+    * Model with LABEL variable (100% accuracy on test dataset)
+    * Model with FIRE_CLASS variable (61% accuracy on test dataset)
+    
+* Random Forest seems to be the best model to answers our reserach questions so far and we will be running Naive Bayes and SVM models on all of the datasets for final report.
 
 ### Twitter Data
 
