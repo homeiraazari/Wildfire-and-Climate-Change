@@ -33,10 +33,10 @@ FIRE_NAME, FIRE_YEAR, DISCOVERY_DATE, DISCOVERY_DOY, STAT_CAUSE_DESCR, CONT_DATE
 
 Each tweet is labelled as one of the following classes:
 
-2(News): the tweet links to factual news about climate change
-1(Pro): the tweet supports the belief of man-made climate change
-0(Neutral: the tweet neither supports nor refutes the belief of man-made climate change
--1(Anti): the tweet does not believe in man-made climate change
+    * 2(News): the tweet links to factual news about climate change
+    * 1(Pro): the tweet supports the belief of man-made climate change
+    * 0(Neutral: the tweet neither supports nor refutes the belief of man-made climate change
+    * -1(Anti): the tweet does not believe in man-made climate change
 
 * For starters at a glance the data did not look messy as it did not have any null or missing values. But once we dug deeper we had to understand how we could clean up this dataset.
 
@@ -126,9 +126,14 @@ Pre Processing the data in order to do modeling:
 
 * Exploring Sentiment analysis on Twitter data for Climate change.
 
-* Running a logistic regression model with tfidf vectorizer. 
+* Running a Logistic regression with TFIDF vectorizer: 64.20% 
 
-* Comparing two different logistic regression models with sparsity (L1 and L2). Firstly, setting up a baseline and getting the tfidf vectorizer score and count vectorizer score for the logistic regression. Then, transforming features as per the vextorizer which worked better for the model with respect to score and fit with l1 and l2 respectively to get a cross validation score to compare.
+* Compared two logistic regression with TFIDF and Count Vectorizer: TFIDF: 67.86% Count Vectorizer: 70.33%
+
+* Once we observed the count vectorizer was performing better, we decided to compare this regression by running two models with l1 and l2 penalty for sparsity. For this we transformed the count vectorizer to ngram range of (1,3) and compared their cross-validation score. Both the models performed well but l2 penalty scores were better than the l1 penalty.
+
+    L1: Cross Validation Score: 0.7089, 0.708, 0.71
+    L2: Cross Validation Score: 0.726, 0.727, 0.73
 
 * Running a random forest classifier.
 
